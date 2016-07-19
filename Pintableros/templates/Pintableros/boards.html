@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Pintableros</title> {% endblock %}
+
+{% block board %}<li class="active"><a href="/Pintableros/Pintableros">Pintableros</a></li> {% endblock %}
+
+{% block content %}
+	{%if list %}
+		<h1  align="center"><small>Crea un nuevo Pintablero pulsando <a href="/Pintableros/newB">aqu&iacute.</a></small></h1>
+		<div id="wrapper">
+       	  <div id="columns">
+		{%for board in list %}
+			<div class="pin">
+            	<h3 align=center>Pintablero de {{board.userBoard}}</h3>
+            	<p>T&iacutetulo: <a href='{{board.id}}'>{{board.name}} </a></p>
+            	<span class="pull-left">
+		<p>Descripci&oacuten: <a href='{{board.id}}'>{{board.description}}</a></p>
+		</span>
+		        <h6>
+        	    <span class="pull-left"><small>Creado por: </small><a href='/Usuarios/viewprofile/{{board.userBoard.id}}'>{{board.userBoard}}</a><small>, el {{board.date}}</small></span><br>
+		        	{%  ifequal user.username|stringformat:"s" board.userBoard|stringformat:"s" %}  
+		        		<h3 align=center><small>Opciones:</small>
+		        		<a href='/Pintableros/editB/{{board.id}}' class="btn btn-xs btn-warning" title="Editar Pintablero" value=""><i class="glyphicon glyphicon-edit"></i></a> 		 <a href='/Pintableros/deleteB/{{board.id}}' class="btn btn-xs btn-danger" title="Borrar Pintablero" value=""><i class="glyphicon glyphicon-remove-sign"></i></a></h3>
+		        	{% endifequal %}
+		       
+		        </h6>
+        	</div>
+
+		{% endfor %}
+		  </div>
+		</div>
+
+	{% else %}
+		<!--Texto entre barra de navegación y  publicaciones-->
+		<h1  align="center"><small>Crea tu primer tablón donde todo el mundo pueda compartir sus experiencias y clasifica tus pines pulsando <a href="/Pintableros/newB">aquí.</a></small></h1>
+	{% endif %}
+
+{% endblock %}

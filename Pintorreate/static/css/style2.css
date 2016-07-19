@@ -1,0 +1,36 @@
+
+.img_container{
+  background: rgb(225, 225, 243);
+  border-radius: 6px;
+  display: inline-table;
+  width: 32%;
+  position:relative;
+  text-align: -webkit-center;
+  top:50%;
+  left:2%;
+  margin-bottom: 5px;
+}
+
+.c2{
+  background: rgb(225, 225, 243);
+  border-radius: 5px;
+  display: inline-table;
+  width: 80%;
+  text-align: -webkit-center;
+  position:relative;
+  top:50%;
+  left:10%;
+}
+
+.c3{
+
+  display: inline-block;
+  width: 80%
+  text-align: -webkit-center;
+  position:relative;
+  top:50%;
+  left: 10%;
+}
+
+
+

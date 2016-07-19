@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Categorías de Pintorreate</title> {% endblock %}
+
+{% block cat %}<li class="active"><a href="/Categorias/categories">Categorías</a></li> {% endblock %}
+
+{% block content %}
+	{%if list %}
+		<h1  align="center"><small>Categorías de Pintorreate</small></h1>
+		<div id="wrapper">
+       	  <div id="columns">
+		{%for Categoria in list %}
+			<div class="pin">
+			<div id="titulocat" align=center>{{Categoria.nameCat}}</div><br>
+            	<a href='{{Categoria.id}}'><img src='{{MEDIA_URL}}{{Categoria.imageCat}}'/> </a>
+		        <p align="center">
+    		    <a href='{{Categoria.id}}'> {{Categoria.descriptionCat}}</a>
+        	    </p>
+        	</div>
+
+		{% endfor %}
+		  </div>
+		</div>
+
+	{% else %}
+		<h1  align="center"><small>No existe ninguna categoría.</small></h1>
+	{% endif %}
+
+{% endblock %}

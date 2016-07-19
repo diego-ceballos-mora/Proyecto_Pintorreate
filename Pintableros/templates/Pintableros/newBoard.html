@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Creando un nuevo Pintablero </title> {% endblock %}
+
+{% block board %}<li class="active"><a href="/Pintableros/Pintableros">Pintableros</a></li> {% endblock %}
+
+{% block content%}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Creaci&oacuten de un Pintablero</h3>
+          </div>
+          
+          <form id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+          
+          <div class="panel-body" align="center">
+            <div class="row">
+                <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>T&iacutetulo:</td>
+                        <td>
+                          <div class="col-sm-11 col-md-11 col-lg-11">
+                            <input id="id_name" name="{{formB.name.name}}" type="text" value="" placeholder="Titulo" class="form-control">
+                          </div>
+                        </td>
+                      </tr>
+                    <tr>
+                      <td>Descripción:</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                          <textarea id="id_description" name="{{formB.description.name}}" type="test" value="" placeholder="Descripción del Pintablero" class="form-control"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type="hidden" name="{{formB.userBoard.name}}" value="{{user.id}}">
+                <input type="reset" class="btn btn-primary" value="Borrar Pintablero">
+                <input type="submit" class="btn btn-primary" value="Crear Pintablero">
+              </div>
+            </div>
+          </div>
+	  <div class="panel-footer">
+                            
+            </span>
+          </div>
+
+          </form> 
+           
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

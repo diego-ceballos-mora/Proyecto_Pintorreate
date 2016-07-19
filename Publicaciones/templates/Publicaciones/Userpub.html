@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Pintorreos de {{user.username}} </title> {% endblock %}
+
+{% block pub %}<li class="dropdown active">{% endblock %}
+
+{% block content %}
+
+{%if listPU == Null %}
+		<h1  align="center"><small>¿Todav&iacutea sin pintorrear nada? Crea tu primer pintorreo pulsando <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+
+{% else %}
+
+	<h1  align="center"><small>Publica tus experiencias. Crea una nuevo pintorreo pulsando <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+
+	<div id="wrapper">
+       	<div id="columns">
+
+	{% for publi in listPU %}
+
+		<div class="pin">
+            <a href='{{publi.id}}'><img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+            <p>
+            <a href='{{publi.id}}'> {{ publi.title }}</a>
+            </p>
+        </div>
+	{%endfor%}
+		</div>
+    </div>
+		
+{% endif %}
+
+{% endblock %}

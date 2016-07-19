@@ -1,0 +1,21 @@
+{% extends "baselog.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="login-container">
+      <div id="output"></div>
+          <div class="form-box2">
+                <form id='form' method='post' action=''>{% csrf_token %}
+                    <input id="{{form.username.name}}" name="{{form.username.name}}" type="text" placeholder="Usuario">
+                    <input id="{{form.first_name.name}}" name="{{form.first_name.name}}" type="text" placeholder="Nombre">
+                    <input id="{{form.last_name.name}}" name="{{form.last_name.name}}" type="text" placeholder="Apellidos">
+                    <input id = "{{form.password1.name}}" name = "{{form.password1.name}}" type="password" placeholder="password">
+                    <input id = "{{form.password2.name}}" name = "{{form.password2.name}}" type="password" placeholder="password">
+                    <button class="btn-info btn-block login" type="submit">Aceptar</button>
+                    <button class="btn-info btn-block login"  href="/">Cancelar</a>
+                </form>
+          </div>
+      </div>  
+  </div>
+
+{% endblock %}

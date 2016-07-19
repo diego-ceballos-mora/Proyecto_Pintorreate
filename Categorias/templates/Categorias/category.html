@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+    {% block cat %}<li class="selected"><a href="/Categorias/categories">Categor&iacuteas</a></li> {% endblock %}
+
+{% block content %}
+	{%if Categoria %}
+		<div class = "c2">
+			{{ Categoria.nameCat }}
+			<br>
+        	<img style="width: 90%;" src='{{MEDIA_URL}}{{Categoria.imageCat}}'>
+        	<br>
+        	{{Categoria.descriptionCat}}
+        </div>
+	{% else %}
+		<label>No Existe Ninguna Categor&iacutea</label>
+	{% endif %}
+{% endblock %}
+
+
+

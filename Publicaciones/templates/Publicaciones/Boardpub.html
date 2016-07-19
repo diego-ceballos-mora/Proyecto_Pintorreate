@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Pintorreate:{{b.name}}</title> {% endblock %}
+
+{% block board %}<li class="active"><a href="/Pintableros/Pintableros">Pintableros</a></li>{% endblock %}
+
+{% block content %}
+	{%if list %}
+		<h1  align="center"><small>Pintablero {{b.name}} del Usuario {{b.userBoard}}</small></h1>
+
+	<div id="wrapper">
+       	<div id="columns">
+		{% for publi in list%}
+    		{% if user.is_authenticated %}
+				<div class="pin">
+            		<a href='/Publicaciones/{{publi.id}}'><img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+		            <p align="center">
+    		        <a href='{{publi.id}}'>Título: {{ publi.title }}</a>
+    		        <br> Creado por: {{publi.UserPub}}
+        		    </p>
+        		</div>
+        	{% else %}
+        		<div class="pin">
+            		<img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+		            <p align="center">
+    		        {{ publi.title }}
+        		    </p>
+        		</div>
+        	{% endif %}
+    	{% endfor %}
+    	</div>
+    </div>
+    {% else %}
+
+		<h1  align="center"><small>No existe ningun Pintorreo en {{b.name}}. Se el primero en crear uno pulsando <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+    {% endif %}
+
+{% endblock %}

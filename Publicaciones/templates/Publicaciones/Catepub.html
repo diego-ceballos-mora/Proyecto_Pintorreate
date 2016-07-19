@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Pintorreate: {{Categoria}}</title> {% endblock %}
+
+{% block cat %}<li class="active"><a href="/Categorias/categories">Categor&iacuteas</a></li>{% endblock %}
+
+{% block content %}
+	{%if listPC %}
+		
+		<h1  align="center"><small>Crea más Pintorreos pulsando <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+
+	<div id="wrapper">
+       	<div id="columns">
+		{% for publi in listPC%}
+    		{% if user.is_authenticated %}
+				<div class="pin">
+            		<a href='/Publicaciones/{{publi.id}}'><img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+		            <p align="center">
+    		        <a href='{{publi.id}}'> {{ publi.title }}</a>
+    		        <br> Creado por: {{publi.UserPub}}
+        		    </p>
+        		</div>
+        	{% else %}
+        		<div class="pin">
+            		<img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+		            <p align="center">
+    		        {{ publi.title }}
+        		    </p>
+        		</div>
+        	{% endif %}
+    	{% endfor %}
+    	</div>
+    </div>
+    {% else %}
+    	<h1  align="center"><small>No existe ning&uacuten Pintorreo. Se el primero en crear uno pulsando <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+    {% endif %}
+
+{% endblock %}

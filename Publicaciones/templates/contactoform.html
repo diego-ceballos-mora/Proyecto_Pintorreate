@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+{%block correo %}
+
+	<h1  align="center"><small>Contacta para sugerir nuevas categorías, ideas o si tienes problemas con la web.</a></small></h1><br>
+
+	<form id='formulario' method='post' action='' class="">{% csrf_token %}
+	{{formulario.as_p}}
+	<input align=center type="submit" class="btn btn-primary" value="Enviar">
+	</form>
+{% endblock %}

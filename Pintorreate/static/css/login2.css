@@ -1,0 +1,175 @@
+html,body{
+    position: relative;
+    height: 100%;
+}
+
+.login-container{
+    position: relative;
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px 40px 40px;
+    text-align: center;
+    border-radius: 15px;
+    background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #46CCFC 100%);
+    background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #46CCFC 100%);
+    background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #46CCFC 100%);
+    background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #46CCFC 100%);
+    background-image: linear-gradient(to bottom, #FFFFFF 0%, #46CCFC 100%);
+}
+
+#output{
+    position: absolute;
+    width: 300px;
+    top: -75px;
+    left: 0;
+    color: #fff;
+}
+
+#output.alert-success{
+    background: rgb(25, 204, 25);
+}
+
+#output.alert-danger{
+    background: rgb(228, 105, 105);
+}
+
+
+.avatar{
+    width: 100px;height: 100px;
+    margin: 10px auto 30px;
+    border-radius: 100%;
+    border: 2px solid #aaa;
+    background-size: cover;
+}
+
+.form-box input{
+    
+    box-sizing: border-box; 
+    height:40px;
+    border: 1px solid #ccc;;
+    background: #fafafa;
+    transition:0.2s ease-in-out;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    border-radius: 15px;
+
+}
+
+.form-box input:focus{
+    outline: 0;
+    background: #eee;
+}
+
+.form-box input[type="text"]{
+    border-radius: 15px 15px 15px 15px;
+    text-transform: lowercase;
+}
+
+.form-box input[type="password"]{
+    border-radius: 15px 15px 15px 15px;
+    border-top: 0;
+}
+
+.form-box button.login{
+    margin-top:10px;
+    padding: 10px 20px;
+}
+
+.form-box2 input{
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 10px;
+    text-align: center;
+    height:40px;
+    background: #fafafa;
+    transition:0.2s ease-in-out;
+
+}
+
+.form-box2 input:focus{
+    outline: 0;
+    background: #eee;
+}
+
+.form-box2 input[type="text"]{
+    border-radius: 5px 5px 5px 5px;
+    text-transform: lowercase;
+}
+
+.form-box2 input[type="password"]{
+    border-radius: 5px 5px 5px 5px;
+    border-top: 0;
+}
+
+.form-box2 button.login a.login{
+    margin-top:15px;
+    padding: 10px 20px;
+}
+
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+
+.login{
+
+	position:relative; 
+	width: 100%;
+	margin: 1em;
+	padding: 1em;
+	text-align: center;
+	border-radius: 15px;
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, #FFFFFF),
+	color-stop(1, #FFFFFF)
+	);
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #46CCFC 100%);
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #46CCFC 100%);
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #46CCFC 100%);
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #46CCFC 100%);
+	background-image: linear-gradient(to top, #FFFFFF 0%, #46CCFC 100%);
+		
+}

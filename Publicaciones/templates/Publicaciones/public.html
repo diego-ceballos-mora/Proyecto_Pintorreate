@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+
+
+{% block title %}<title>Pintorreos</title> {% endblock %}
+
+{% block init %}
+
+
+	{%  if user.is_authenticated %}
+
+		<div class="col-md-12 col-lg-12 " align="center"> 
+		      <img src="/static/img/logo.png" class="img-responsive img-profile3">
+		      </div>
+	{% else %}
+		<div class="col-md-12 col-lg-12 " align="center"> 
+		      <img src="/static/img/logo.png" class="img-responsive img-profile3">
+		      </div>
+	{% endif %}
+{% endblock %}
+
+
+{% block home %}
+	{%  if user.is_authenticated %}
+		<li class="active"><a href="/Publicaciones/public">Inicio</a></li>
+	{% else %}
+		<li class="active"><a href="/Publicaciones/Generalpublic">Inicio</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block content%}
+
+<h1  align="center"><small>Comenta y puntua todos los Pintorreos que quieras.</a></small></h1>
+
+	{%if list %}
+		
+		<div id="wrapper">
+       		<div id="columns">
+		{% for publi in list%}
+
+	       	{% if user.is_authenticated %}
+	       		<div class="pin">
+            		<a href='/Publicaciones/{{publi.id}}'><img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+		            <p align="center">
+    		        <a href='{{publi.id}}'> {{ publi.title }}</a>
+    		        <br> Creado por: {{publi.UserPub}}
+        		    </p>
+       			</div>
+           	{% else %}
+        		<div class="pin">
+            		<img src='{{MEDIA_URL}}{{publi.imagePub}}'/> </a>
+		    	    <p align="center">
+    			    {{ publi.title }}
+        		    </p>
+        		</div>
+        	{% endif %}
+
+	  	{%endfor%}
+	    	</div>
+	    </div>
+
+	{% else %}
+		
+		<h1  align="center"><small>No existe ning&uacuten Pintorreo. Se el primero en crear uno pulsando <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+    {% endif %}
+
+{% endblock %}

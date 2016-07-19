@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>Pintorreate</title>
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="stylesheet" href="/static/css/style2.css" />
+</head>
+
+<body>
+      
+	<div id="menubar">
+        <ul id="menu">
+	
+          {% block home %}<li><a href="/Publicaciones/public">Inicio</a></li> {% endblock %}
+          {% block cat %}<li><a href="/Categorias/categories">Categor&iacuteas</a></li> {% endblock %}
+         {% if user.is_authenticated %}
+          {% block pub %}<li><a href="/Publicaciones/UserPublic">Mis Pintorreos</a></li> {% endblock %}
+          {% block prof %}<li><a href="/Usuarios/profile">Mi perfil</a></li> {% endblock %}
+          {% block logout %} <li><a href="/logout">Cerrar sesi&oacuten</a></li> {% endblock %}
+         {% else %}
+          {% block log %}<li><button href="/">Login</a></li> {% endblock %}
+          {% block reg %}<li><button href="/Usuarios/new">Registrarse</a></li> {% endblock %}
+         {% endif %}
+
+		    </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div class="sidebar">
+        {% block aside %}
+        
+        {% if user.is_authenticated %}
+        Usuario Logueado: <h4>{{user.first_name}} {{user.last_name}}</h4>
+        <h3>Opciones Pintorreo</h3>
+        <ul>
+          <li><a href='/Publicaciones/newP'>Crear Pintorreo</a></li>
+          
+        </ul>
+        {% endif %}
+        {% endblock%}
+      </div>
+      <div id="content">
+      <div id="Pub">{% block Pub %}{% endblock %}</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

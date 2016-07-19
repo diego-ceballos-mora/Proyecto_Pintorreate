@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>PhotoDesk: Perfil de {{u.first_name}} {{u.last_name}}</title> {% endblock %}
+
+
+{% block cprofile %}<li class="dropdown active"> {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">{{u.first_name}} {{u.last_name}}</h3>
+          </div>
+          
+          <div class="panel-body" align="center">
+            <div class="row">
+              <div class="col-md-12 col-lg-12 " align="center"> 
+              
+                {% if u.avatar %}
+                  <img src='{{MEDIA_URL}}{{u.avatar}}' alt="Alternate Text" class="img-circle img-responsive img-profile" />
+                {% else %}
+                  <img src='http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg' alt="Alternate Text" class="img-circle img-responsive img-profile" />
+                {% endif %}
+              
+              </div>
+
+                <div class=" col-md-12 col-lg-12 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Nombre:</td>
+                        <td>
+                          <div class="col-sm-11 col-md-11 col-lg-11">
+                            {{u.first_name}}
+                          </div>
+                        </td>
+                      </tr>
+                    <tr>
+                      <td>Apellidos:</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                          {{u.last_name}}
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Usuario:</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                          {{u.username}}
+                        </div>
+                      </td>
+                    </tr>
+                   
+                    <tr>
+                      <td>Email</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                         {{u.email}}
+                        </div>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+                {% if u.id == profile.id %}
+                <a class="btn btn-primary" href="/Usuarios/profile">Modificar Datos del Perfil</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-footer">
+          </div>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

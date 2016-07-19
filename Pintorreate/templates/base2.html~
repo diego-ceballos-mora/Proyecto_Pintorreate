@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% block title %}<title>Pintorreate</title> {% endblock %}
+
+    	<link href="/static/css/bootstrap.css" rel="stylesheet">
+    	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="/static/css/drop-down_menu.css" rel="stylesheet">
+        <link href="/static/css/divs.css" rel="stylesheet">
+
+	<script src="/static/js/jquery-1.11.1.min.js"></script>
+    	<script src="/static/js/bootstrap.min.js"></script> 
+
+	</head>
+
+	<body>
+	
+	<div class="logo">
+
+	<a href="#" class="img-responsive3 img-profile3"><img src="/static/img/logo.png"/></a><br>
+
+	</div>
+
+		<div class="container" >
+		  
+		    <div class="navbar-header">
+		
+              {% block init %}
+		      
+		      <img src="/static/img/logo.png" class="img-responsive img-profile3">
+		      
+              {% endblock %}
+		    </div>
+		  
+		   
+		    <div class="collapse navbar-collapse navbar-ex1-collapse">
+		    		  	  
+		      <ul class="nav navbar-nav navbar-right">
+		        
+                {% if user.is_authenticated %}
+                 {% block cat %}<li><a href="/Categorias/categories">Categor&iacuteas</a></li>{% endblock %}
+				<li><a href="/Pintableros/newB">Nuevo Pintablero</a></li>
+				<li><a href="/Pintableros/Pintableros">Pintableros</a></li>
+				<li><a href="/Publicaciones/contactoform">Contacto</a></li>
+				<li><a href="/Publicaciones/newP">Nuevo Pintorreo</a></li>
+				<li><a href="/Publicaciones/UserPublic">Mis Pintorreos</a></li>
+        
+                 </li>
+
+                 {% block cprofile %}<li class="dropdown"> {% endblock %}<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{user.username}} 
+                    <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-content">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            {% block image %}
+                                           <img src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg" alt="Alternate Text" class="img-responsive" />
+
+                                            
+                                            {% endblock %}
+                                        </div>
+                                    	<div class="col-md-7">
+                                    	<span>{{user.first_name}} {{user.last_name}}</span>
+                                    	<p class="text-muted small">
+                                    	{{user.email}}</p>
+                                    	<div class="divider">
+                                    	</div>
+                                    		<a href="/Usuarios/profile" class="btn btn-primary btn-sm ">Ver Perfil</a><br>
+						<a href="/logout" class="btn btn-primary btn-sm">Cerrar Sesi&oacuten</a><br>
+                                		</div>
+                            		</div>
+                        	</div>
+                        </li>
+                    </ul>
+                </li>
+                
+                {% else %}
+                 {% block log %}<li><a href="/">Login</a></li> {% endblock %}
+                 {% block reg %}<li><a href="/Usuarios/new">Registrarse</a></li>{% endblock %}
+                {% endif %}
+              </ul>
+		    </div>
+		</div>
+
+
+	 <footer class="pie3">
+	{%block correo %}
+
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+	{{formulario.as_p}}
+	</form>
+
+	{% endblock %}
+
+	</footer>
+
+        {% block content %}
+        {% endblock %}
+
+
+
+    <footer class="pie2">
+        <p center>&copy; Diego Ceballos Mora | Programaci&oacuten Web | Septiembre 2014 | <a href="https://twitter.com/intent/tweet?screen_name=ilcapoDiego8" class="twitter-mention-button" data-lang="es">Tweet para @ilcapoDiego8</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> | <!-- Facebook Badge START --><a href="https://www.facebook.com/people/Diego-Ceballos-Mora/100002446427117" title="Diego Ceballos Mora" target="TOP"><img class="img" src="/static/img/Facebook.png"; style="border: 0px;" alt="" height="25" width="37"/></a><!-- Facebook Badge END -->	|	<a data-pin-do="buttonFollow" href="http://www.pinterest.com/diegoceballos/">diegoceballos</a>
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+	</p>
+	
+    </footer> 
+
+	</body>
+
+</html>

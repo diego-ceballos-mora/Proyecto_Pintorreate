@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+
+{% block title %}<title>Creando un nuevo Pintorreo</title> {% endblock %}
+
+{% block pub %}<li class="dropdown active">{% endblock %}
+
+{% block content%}
+
+<h1  align="center"><small>Cree tantos Pintorreos como desees.</a></small></h1><br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"></h3>
+          </div>
+          
+          <form id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+          
+          <div class="panel-body" align="center">
+            <div class="row">
+              <div class="col-md-12 col-lg-12 " align="center"> 
+              
+                <img alt="User Pic" src="/static/img/pintorreo.png" class="img-responsive img-profile2"><br>
+              
+              <input id="id_imagePub" name="{{formP.imagePub.name}}" type="file" class="btn btn-default">
+              <br>
+              </div>
+
+                <div class=" col-md-12 col-lg-12 " > 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr align=center>
+                        <td>Titulo:</td>
+                        <td>
+                          <div class="col-sm-11 col-md-11 col-lg-11">
+                            <input id="id_title" name="{{formP.title.name}}" type="text" value="" placeholder="Titulo" class="form-control">
+                          </div>
+                        </td>
+                      </tr>
+                    <tr align=center>
+                      <td>Descripci&oacuten Breve:</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                          <textarea id="id_descriptionPub" name="{{formP.descriptionPub.name}}" type="test" value="" placeholder="Descripción Breve" class="form-control"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr align=center>
+                      <td>Seleccione una Categor&iacutea:</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                          {{formP.CatPub}}
+                        
+                        </div>
+                      </td>
+                    </tr>
+		 <tr>
+                      <td>Seleccione un Pintablero:</td>
+                      <td>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                          {{formP.boardPub}}
+                        
+                        </div>
+                      </td>
+                    </tr>
+
+	
+                  </tbody>
+                </table>
+                <input type="hidden" name="{{formP.UserPub.name}}" value="{{user.id}}">
+                <input type="reset" class="btn btn-primary" value="Borrar Pintorreo" align=center>
+                <input type="submit" class="btn btn-primary" value="Crear Pintorreo" align=center>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-footer">
+          </div>
+          </form> 
+           
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

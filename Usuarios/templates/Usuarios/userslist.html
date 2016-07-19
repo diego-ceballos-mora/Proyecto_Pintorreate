@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	{% for user in userList %}
+		{{user.first_name}} {{user.last_name}} ({{user.username}}) <a href="/Usuarios/delete/{{Usuario.id}}"><img src='{{STATIC_URL}}icons/delete.png' alt=""/></a><br>
+	{% empty %}
+		<p>Usuario no disponible.</p>
+	{% endfor %}
+{% endblock %}
+
+{% block aside %}
+	<form action="/Usuarios/newuser"><input type="submit" value="Nuevo Usuario"></form>
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'index.html' %}
+
+
+{% block title %}<title>{{Publicacion.title}} </title> {% endblock %}
+
+
+{% block pub %}<li class="dropdown active">{% endblock %}
+
+{% block content%}
+
+{%if publication %}
+
+      <h1  align="center"><small>Publica tus Pintorreos. Crea un nuevo Pintorreo haciendo click <a href="/Publicaciones/newP">aqu&iacute.</a></small></h1>
+
+
+      <div id="wrapper">
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1">
+            <div class="comment" >
+                  <div class="panel-heading" align="center">
+                        <h3 class="panel-title" align=center>T&iacutetulo: {{publication.title}}</h3>
+                  </div>
+                  <div class="panel-body">
+                        <div class="row">
+                              <img src='{{MEDIA_URL}}{{publication.imagePub}}'>
+                        </div>
+                  </div>
+                  <h4>
+                        <span class="pull-left">
+                        Descripci&oacuten: {{publication.descriptionPub}}
+                        </span>
+                        <span class="pull-right">
+                              <small>Puntuación:</small> <span class="label label-info">{{av}}</span>
+                        </span>
+                  </h4> 
+                  <br>
+                  <h6 align=center> <small>Creado por</small> {{publication.UserPub}} <small>el {{publication.date}}</small>
+                        <span class="pull-right">
+
+                              {%  ifequal user.username|stringformat:"s" publication.UserPub|stringformat:"s" %}
+
+                              <a href='/Publicaciones/mod/{{publication.id}}' class="btn btn-xs btn-warning" title="Editar Pintorreo" value=""><i class="glyphicon glyphicon-edit"></i>
+                              </a>
+                              <a href='/Publicaciones/delete/{{publication.id}}' class="btn btn-xs btn-danger" title="Borrar Pintorreo" value=""><i class="glyphicon glyphicon-remove-sign"></i>
+                              </a>
+                              {% endifequal %} 
+
+                        </span>
+                  </h6>
+            </div>
+
+          </div>
+        </div>
+	<br>
+
+            {% if comments %}
+              {% for co in comments %}
+               <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2"> 
+                 <div class="comment" >                       
+                        <h5><span class="pull-left"><small>Comentario:</small> <br><br>{{co.descriptionCom}}<br></span>
+
+                              <span class="pull-right">
+                                    <small>Puntuaci&oacuten:</small> <span class="label label-info">{{co.Points}}</span>
+                              </span>
+                        </h5>
+                        
+                        <br> <br>
+                        <h6><span class="pull-left"> <small>Usuario:</small> {{co.id_User}} <small>- Fecha: {{co.date}}</small></span>
+                            
+				  <span class="pull-right">
+
+                                   {% if co.id_User.id == user.id or publication.UserPub.id == user.id %}
+
+                                    <a href='/Publicaciones/deleteC/{{co.id}}/pub/{{publication.id}}' title="Borrar Comentario" class="btn btn-xs btn-danger" value=""><i class="glyphicon glyphicon-remove-sign"></i>
+                                    </a>
+                                    {% endif %}
+
+
+                              </span>
+                        </h6>     
+                 </div>
+                </div>
+                </div>
+		<br>
+
+              {% endfor %}
+            {% else %}
+                  <h3  align="center"><small>Este Pintorreo no tiene ningún comentario. Se el primero en comentar y puntuarlo.</small></h3><br>
+
+            {% endif %}
+
+             {% if user.is_authenticated %}
+              <div class="row" align="center">
+               <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                <div class="comment" >
+                  <form id='form' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+                        <div class=" col-xs-12 col-lg-12 "> 
+                        <div class="row">
+                          <div class="col-xs-9">
+                            <h5 class="pull-left">Comentario:</h5>
+                             <br>
+                            
+                              <input id="{{formC.descriptionCom.name}}" name="{{formC.descriptionCom.name}}" type="text" value="" placeholder="Comente esta publicación" class="form-control">
+                          </div>
+                          <div class="col-xs-3">
+                            <small>Puntuaci&oacuten:</small> 
+                              <select id="id_Points" class="btn btn-default btn-xs pull-right" name="{{formC.Points.name}}">
+                                    <option value="0" selected="selected">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                              </select>
+
+                              <input type="hidden" name="{{formC.id_User.name}}" value="{{user.id}}">
+                              <input type="hidden" name="{{formC.id_Pub.name}}" value="{{publication.id}}">
+                              <br><br>
+                              <input type='submit' class="btn btn-primary btn-sm pull-right" value='Comentar'>
+                          </div>
+                        </div>
+                        </div>
+                  </form>
+                </div>
+               </div>
+              </div>
+             {% endif %}
+            
+    </div>
+            
+{% endif %}
+
+{% endblock %}
